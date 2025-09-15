@@ -3,7 +3,6 @@ import {useState, useEffect} from "react";
 import {toast, Toaster} from "sonner"
 import {arrayBufferToBase64, base64ToArrayBuffer} from "@/lib/utils";
 
-
 export default function Home() {
     const [isRegister, setIsRegister] = useState(false);
 
@@ -14,7 +13,7 @@ export default function Home() {
      */
     const handleRegisterClick = async (value: string) => {
         // 向后端请求注册挑战码
-        const challengeResp = await fetch("/api/register-challenge", {
+        const challengeResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register-challenge`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({account: value}),
@@ -28,7 +27,7 @@ export default function Home() {
                 rp: {name: "WebAuthn Demo"}, // Relying Party（依赖方）信息，表示你的网站/服务
                 user: {
                     id: base64ToArrayBuffer(challenge.userId),
-                    name: "http://localhost:3000/",
+                    name: window.location.origin,
                     displayName: "Demo User",
                 }, // 用户信息，表示注册此凭证的用户
                 // 支持的公钥算法类型，-7 表示 ES256 算法
@@ -53,7 +52,7 @@ export default function Home() {
         };
 
         // 将注册响应发送给后端进行验证和存储
-        const verifyResp = await fetch("/api/register-response", {
+        const verifyResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register-response`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(response),
@@ -72,7 +71,7 @@ export default function Home() {
      */
     const handleLoginClick = async (value: string) => {
         // 向后端请求登录挑战码
-        const challengeResp = await fetch("/api/login-challenge", {
+        const challengeResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login-challenge`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({account: value}),
@@ -113,7 +112,7 @@ export default function Home() {
         };
 
         // 将登录响应发送给后端进行验证
-        const verifyResp = await fetch("/api/login-response", {
+        const verifyResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login-response`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(response),

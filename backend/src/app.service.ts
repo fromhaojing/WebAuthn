@@ -49,7 +49,6 @@ export class AppService {
         const userId = Buffer.from(account).toString("base64url");
         // 查找该用户已注册的凭证
         const credentials = inMemoryStore[userId];
-        console.log(credentials)
         if (!credentials || credentials.length === 0) {
             throw new Error("用户未注册或没有凭证");
         }
