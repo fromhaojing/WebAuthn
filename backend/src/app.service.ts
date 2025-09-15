@@ -84,8 +84,8 @@ export class AppService {
         const verification = await verifyRegistrationResponse({
             response: credential as any,
             expectedChallenge,
-            expectedOrigin: 'http://localhost:3001',
-            expectedRPID: 'localhost',
+            expectedOrigin: process.env.NODE_URL,
+            expectedRPID: process.env.RPID,
         });
         const {verified, registrationInfo} = verification;
 
@@ -134,8 +134,8 @@ export class AppService {
         const verification = await verifyAuthenticationResponse({
             response: credential,
             expectedChallenge,
-            expectedOrigin: 'http://localhost:3001',
-            expectedRPID: 'localhost',
+            expectedOrigin: process.env.NODE_URL,
+            expectedRPID: process.env.RPID,
             credential: {
                 id: dbCred.id,
                 publicKey: base64url.toBuffer(dbCred.publicKey),
