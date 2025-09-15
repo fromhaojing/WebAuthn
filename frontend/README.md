@@ -1,28 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# WebAuthn 前端应用
 
-## Getting Started
+这是一个基于 Next.js 的 WebAuthn 前端应用，提供现代化的无密码身份验证用户界面。支持生物识别和硬件安全密钥认证。
 
-First, run the development server:
+## 快速开始
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 环境配置
+
+在项目根目录创建 `.env.local` 文件：
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 启动开发服务器
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# 安装依赖
+pnpm install
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# 启动开发服务器
+pnpm dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+打开 [http://localhost:3000](http://localhost:3000) 查看应用。
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 项目结构
+
+```
+frontend/
+├── pages/
+│   ├── index.tsx          # 主页面
+│   └── api/              # API 路由（如果需要）
+├── components/
+│   └── login-form.tsx    # 登录表单组件
+├── lib/
+│   └── utils.ts          # 工具函数
+├── styles/
+│   └── globals.css       # 全局样式
+└── public/               # 静态资源
+```
+
+## 主要功能
+
+- **用户注册**: 通过 WebAuthn API 注册新用户
+- **用户登录**: 使用生物识别或硬件密钥登录
+- **实时反馈**: 使用 Sonner 提供优雅的通知反馈
+- **响应式设计**: 适配桌面和移动设备
+
+## 技术特性
+
+- **TypeScript**: 完整的类型安全
+- **Tailwind CSS**: 现代化的样式方案
+- **WebAuthn API**: 现代无密码认证
+- **组件化**: 可复用的组件架构
 
 ## Learn More
 

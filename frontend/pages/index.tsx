@@ -13,7 +13,7 @@ export default function Home() {
      */
     const handleRegisterClick = async (value: string) => {
         // 向后端请求注册挑战码
-        const challengeResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register-challenge`, {
+        const challengeResp = await fetch('/api/register-challenge', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({account: value}),
@@ -52,7 +52,7 @@ export default function Home() {
         };
 
         // 将注册响应发送给后端进行验证和存储
-        const verifyResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register-response`, {
+        const verifyResp = await fetch('/api/register-response', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(response),
@@ -71,7 +71,7 @@ export default function Home() {
      */
     const handleLoginClick = async (value: string) => {
         // 向后端请求登录挑战码
-        const challengeResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login-challenge`, {
+        const challengeResp = await fetch('/api/login-challenge', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({account: value}),
@@ -112,7 +112,7 @@ export default function Home() {
         };
 
         // 将登录响应发送给后端进行验证
-        const verifyResp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login-response`, {
+        const verifyResp = await fetch('/api/login-response', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(response),

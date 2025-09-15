@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+WebAuthn 后端服务，基于 NestJS 框架实现。提供用户注册、认证和凭证管理的核心 API 服务。
 
 ## Project setup
 
